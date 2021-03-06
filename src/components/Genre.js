@@ -11,7 +11,7 @@ export default function Genre() {
   return (
     <div className="row">
       {data.map((item, i) => (
-        <div key={i} className="col-3 col-pos">
+        <div key={i} className="col col-pos">
           <button
             type="button"
             className="btn btn-outline-secondary button"
