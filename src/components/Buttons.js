@@ -9,7 +9,7 @@ export default function Buttons() {
   const dispatch = useDispatch();
 
   const nextStep = () => {
-    if (activeStep < 3) {
+    if (activeStep < 4) {
       if (checkNextStep(activeStep) === true) {
         dispatch({ type: "NEXT_STEP" });
       } else {
@@ -23,6 +23,10 @@ export default function Buttons() {
     if (activeStep === 0 && genre !== "") {
       nextChk = true;
     } else if (activeStep === 1 && subGenre !== "" && subGenre === "Add new") {
+      nextChk = true;
+    } else if (activeStep === 2) {
+      nextChk = true;
+    } else if (activeStep === 3) {
       nextChk = true;
     }
 
@@ -46,7 +50,7 @@ export default function Buttons() {
         className="btn btn-secondary"
         onClick={() => nextStep()}
       >
-        Next
+        {activeStep < 3 ? "Next" : "Add"}
       </button>
     </div>
   );

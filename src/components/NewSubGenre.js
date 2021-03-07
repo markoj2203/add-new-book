@@ -19,7 +19,7 @@ export default function NewSubGenre() {
             value=""
             id="defaultCheck1"
           />
-          <label class="form-check-label" for="defaultCheck1">
+          <label className="form-check-label" htmlFor="defaultCheck1">
             Description is required for this subgenre
           </label>
         </div>

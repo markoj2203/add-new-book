@@ -1,19 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Steps from "./Steps";
 import MainContent from "./MainContent";
 import Buttons from "./Buttons";
+import Successful from "./Successful";
 
 function App() {
-  // const [genre, setGenre] = useState("");
-  // const [subGenre, setSubGenre] = useState("");
-  // const [subGenreData, setSubGenreData] = useState("");
-  // const [error, setError] = useState("");
+  const activeStep = useSelector((state) => state.setActiveStep.count);
 
   return (
     <div className="container">
-      <Steps />
-      <MainContent />
-      <Buttons />
+      {activeStep === 4 ? (
+        <Successful />
+      ) : (
+        <>
+          <Steps />
+          <MainContent />
+          <Buttons />
+        </>
+      )}
     </div>
   );
 }
