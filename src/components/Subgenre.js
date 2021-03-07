@@ -1,16 +1,17 @@
 import React from "react";
-import { dataObject } from "../data-object.js";
-
-const data = dataObject.genres;
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Genre() {
+  const subGenreData = useSelector((state) => state.subGenreData.data);
+  const dispatch = useDispatch();
   const selectSubgenre = (event) => {
+    dispatch({ type: "SELECT_SUB_GENRE", subGenre: event.target.innerText });
     //setSubGenre(event.target.innerText);
   };
 
   return (
     <div className="row">
-      {data.map((item, i) => (
+      {subGenreData.map((item, i) => (
         <div key={i} className="col col-pos">
           <button
             type="button"
@@ -21,6 +22,13 @@ export default function Genre() {
           </button>
         </div>
       ))}
+      <button
+        type="button"
+        className="btn btn-outline-secondary button"
+        onClick={selectSubgenre}
+      >
+        Add new
+      </button>
     </div>
   );
 }

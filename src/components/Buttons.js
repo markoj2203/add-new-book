@@ -3,16 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Buttons() {
   const activeStep = useSelector((state) => state.setActiveStep.count);
+  const genre = useSelector((state) => state.selectGenre.genre);
+  const subGenre = useSelector((state) => state.selectSubGenre.subGenre);
+
   const dispatch = useDispatch();
 
   const nextStep = () => {
     if (activeStep < 3) {
-      //   let genreArr = data.filter(function (item) {
-      //     return item.name === genre;
-      //   });
-      //   setSubGenreData(genreArr[0].subgenres);
-      dispatch({ type: "NEXT_STEP" });
+      if (checkNextStep(activeStep) === true) {
+        dispatch({ type: "NEXT_STEP" });
+      } else {
+        console.log("error");
+      }
     }
+  };
+
+  const checkNextStep = (activeStep) => {
+    let nextChk = false;
+    if (activeStep === 0 && genre !== "") {
+      nextChk = true;
+    } else if (activeStep === 1 && subGenre !== "" && subGenre === "Add new") {
+      nextChk = true;
+    }
+
+    return nextChk;
   };
 
   const backStep = () => {
