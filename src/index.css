@@ -15,13 +15,15 @@ body {
   justify-content: flex-end;
   width: 100%;
 }
-
 .col-pos {
   display: flex;
   justify-content: center;
   margin: 0.5em;
 }
-
 .button {
   width: 80%;
+}
+.new-sub-genre {
+  width: 100%;
+  padding: 3em;
 }
