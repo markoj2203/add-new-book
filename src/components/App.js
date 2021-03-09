@@ -7,10 +7,11 @@ import Successful from "./Successful";
 
 function App() {
   const activeStep = useSelector((state) => state.setActiveStep.count);
+  const countStep = useSelector((state) => state.countStep.count);
 
   return (
     <div className="container">
-      {activeStep === 4 ? (
+      {activeStep > countStep ? (
         <Successful />
       ) : (
         <>

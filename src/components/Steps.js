@@ -6,6 +6,21 @@ import img from "../img/three-dots.svg";
 export default function Steps() {
   const activeStep = useSelector((state) => state.setActiveStep.count);
   const errMessage = useSelector((state) => state.errorStep.message);
+  const subGenre = useSelector((state) => state.selectSubGenre.subGenre);
+  const chkSub =
+    subGenre !== "Add new"
+      ? [
+          { title: errMessage !== "" ? errMessage : "Genre" },
+          { title: "Subgenre" },
+          { title: "Information" },
+        ]
+      : [
+          { title: errMessage !== "" ? errMessage : "Genre" },
+          { title: "Subgenre" },
+          { title: "Add new subgenre" },
+          { title: "Information" },
+        ];
+
   const steps =
     activeStep < 2
       ? [
@@ -18,12 +33,7 @@ export default function Steps() {
           },
           { title: "", icon: img },
         ]
-      : [
-          { title: errMessage !== "" ? errMessage : "Genre" },
-          { title: "Subgenre" },
-          { title: "Add new subgenre" },
-          { title: "Information" },
-        ];
+      : chkSub;
 
   return (
     <div>

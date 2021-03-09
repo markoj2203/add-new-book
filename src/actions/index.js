@@ -44,3 +44,10 @@ export const descriptionChecked = (checked) => {
     payload: checked,
   };
 };
+
+export const countStep = (count) => {
+  return {
+    type: "COUNT_STEP",
+    payload: count,
+  };
+};

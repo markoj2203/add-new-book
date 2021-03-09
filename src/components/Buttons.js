@@ -5,6 +5,7 @@ export default function Buttons() {
   const activeStep = useSelector((state) => state.setActiveStep.count);
   const genre = useSelector((state) => state.selectGenre.genre);
   const subGenre = useSelector((state) => state.selectSubGenre.subGenre);
+  const countStep = useSelector((state) => state.countStep.count);
 
   const dispatch = useDispatch();
 
@@ -14,7 +15,7 @@ export default function Buttons() {
   ];
 
   const nextStep = () => {
-    if (activeStep < 4) {
+    if (activeStep <= countStep) {
       if (checkNextStep(activeStep) === true) {
         dispatch({ type: "ERROR_STEP", message: "" });
         dispatch({ type: "NEXT_STEP" });
@@ -62,7 +63,7 @@ export default function Buttons() {
         className="btn btn-secondary"
         onClick={() => nextStep()}
       >
-        {activeStep < 3 ? "Next" : "Add"}
+        {activeStep < countStep ? "Next" : "Add"}
       </button>
     </div>
   );

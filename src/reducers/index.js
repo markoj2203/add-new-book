@@ -56,6 +56,15 @@ const descriptionChecked = (state = { checked: false }, action) => {
   }
 };
 
+const countStep = (state = { count: 4 }, action) => {
+  switch (action.type) {
+    case "COUNT_STEP":
+      return { ...state, count: action.count };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   setActiveStep,
   selectGenre,
@@ -63,6 +72,7 @@ const rootReducer = combineReducers({
   selectSubGenre,
   errorStep,
   descriptionChecked,
+  countStep,
 });
 
 export default rootReducer;

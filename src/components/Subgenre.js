@@ -6,7 +6,11 @@ export default function Genre() {
   const dispatch = useDispatch();
   const selectSubgenre = (event) => {
     dispatch({ type: "SELECT_SUB_GENRE", subGenre: event.target.innerText });
-    //setSubGenre(event.target.innerText);
+    if (event.target.innerText === "Add new") {
+      dispatch({ type: "COUNT_STEP", count: 3 });
+    } else {
+      dispatch({ type: "COUNT_STEP", count: 2 });
+    }
   };
 
   return (
