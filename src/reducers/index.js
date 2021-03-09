@@ -47,12 +47,22 @@ const errorStep = (state = { message: "" }, action) => {
   }
 };
 
+const descriptionChecked = (state = { checked: false }, action) => {
+  switch (action.type) {
+    case "DESCRIPTION_CHECKED":
+      return { ...state, checked: action.checked };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   setActiveStep,
   selectGenre,
   subGenreData,
   selectSubGenre,
   errorStep,
+  descriptionChecked,
 });
 
 export default rootReducer;

@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function Information() {
+  const description = useSelector((state) => state.descriptionChecked.checked);
   return (
     <div className="info">
       <form>
@@ -95,14 +97,16 @@ export default function Information() {
             </div>
           </div>
         </div>
-        <div className="form-group">
-          <label>Description</label>
-          <textarea
-            className="form-control"
-            id="description"
-            rows="3"
-          ></textarea>
-        </div>
+        {description !== false ? (
+          <div className="form-group">
+            <label>Description</label>
+            <textarea
+              className="form-control"
+              id="description"
+              rows="3"
+            ></textarea>
+          </div>
+        ) : null}
       </form>
     </div>
   );

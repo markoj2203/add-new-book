@@ -6,7 +6,6 @@ import img from "../img/three-dots.svg";
 export default function Steps() {
   const activeStep = useSelector((state) => state.setActiveStep.count);
   const errMessage = useSelector((state) => state.errorStep.message);
-  console.log(errMessage);
   const steps =
     activeStep < 2
       ? [

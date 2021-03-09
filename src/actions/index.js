@@ -37,3 +37,10 @@ export const errorStep = (message) => {
     payload: message,
   };
 };
+
+export const descriptionChecked = (checked) => {
+  return {
+    type: "DESCRIPTION_CHECKED",
+    payload: checked,
+  };
+};
