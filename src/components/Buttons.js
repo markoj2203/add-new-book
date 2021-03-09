@@ -8,12 +8,21 @@ export default function Buttons() {
 
   const dispatch = useDispatch();
 
+  const errStepMessage = [
+    { message: "Must select Genre!" },
+    { message: "Must select add new Sub Genre!" },
+  ];
+
   const nextStep = () => {
     if (activeStep < 4) {
       if (checkNextStep(activeStep) === true) {
+        dispatch({ type: "ERROR_STEP", message: "" });
         dispatch({ type: "NEXT_STEP" });
       } else {
-        console.log("error");
+        dispatch({
+          type: "ERROR_STEP",
+          message: errStepMessage[activeStep].message,
+        });
       }
     }
   };
@@ -22,7 +31,7 @@ export default function Buttons() {
     let nextChk = false;
     if (activeStep === 0 && genre !== "") {
       nextChk = true;
-    } else if (activeStep === 1 && subGenre !== "" && subGenre === "Add new") {
+    } else if (activeStep === 1 && subGenre !== "") {
       nextChk = true;
     } else if (activeStep === 2) {
       nextChk = true;
@@ -34,7 +43,10 @@ export default function Buttons() {
   };
 
   const backStep = () => {
-    if (activeStep !== 0) dispatch({ type: "BACK_STEP" });
+    if (activeStep !== 0) {
+      dispatch({ type: "BACK_STEP" });
+      dispatch({ type: "ERROR_STEP", message: "" });
+    }
   };
   return (
     <div className="step-buttons">

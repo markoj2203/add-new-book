@@ -30,3 +30,10 @@ export const selectSubGenre = (subGenre) => {
     payload: subGenre,
   };
 };
+
+export const errorStep = (message) => {
+  return {
+    type: "ERROR_STEP",
+    payload: message,
+  };
+};

@@ -38,11 +38,21 @@ const selectSubGenre = (state = { subGenre: "" }, action) => {
   }
 };
 
+const errorStep = (state = { message: "" }, action) => {
+  switch (action.type) {
+    case "ERROR_STEP":
+      return { ...state, message: action.message };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   setActiveStep,
   selectGenre,
   subGenreData,
   selectSubGenre,
+  errorStep,
 });
 
 export default rootReducer;
