@@ -15,17 +15,23 @@ export default function Genre() {
   };
 
   return (
-    <div className="row">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        width: "100%",
+      }}
+    >
       {data.map((item, i) => (
-        <div key={i} className="col col-pos">
-          <button
-            type="button"
-            className="btn btn-outline-secondary button"
-            onClick={selectGenre}
-          >
-            {item.name}
-          </button>
-        </div>
+        <button
+          key={i}
+          type="button"
+          className="btn btn-outline-secondary button"
+          onClick={selectGenre}
+          style={{ margin: "1em" }}
+        >
+          {item.name}
+        </button>
       ))}
     </div>
   );

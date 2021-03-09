@@ -55,6 +55,7 @@ export default function Buttons() {
         type="button"
         className="btn btn-outline-secondary"
         onClick={() => backStep()}
+        style={{ marginRight: "1em" }}
       >
         Back
       </button>
